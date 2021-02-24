@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
+import os
 
 class PAM(object):
 
     def __init__(self):
         os.system('module load ccp4')
 
-    def inputs(self):
-        self.datain = str(input('Data file in (hkl/sca/mtz): '))
-        self.model = str(input('Model in: '))
-        self.pdbin = str(input('Fixed origin model: '))
+    def inputs(self, datain, model, pdbin):
+        self.datain = datain
+        self.model = model
+        self.pdbin = pdbin
 
     def pointless(self):
         if self.datain.endswith('.hkl' or '.HKL'):
@@ -40,8 +41,11 @@ class PAM(object):
         os.system('cd dimp; bash anom-coot.sh')
 
 if __name__ == '__main__':
+    datain = str(input('Data file in (hkl/sca/mtz): '))
+    model = str(input('Model in: '))
+    pdbin = str(input('Fixed origin model: '))
     PAMpy = PAM()
-    PAMpy.inputs()
+    PAMpy.inputs(datain, model, pdbin)
     PAMpy.pointless()
     PAMpy.aimless()
     PAMpy.molrep()
