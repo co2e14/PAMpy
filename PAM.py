@@ -7,9 +7,9 @@ class PAM(object):
         os.system('module load ccp4')
 
     def inputs(self):
-        self.datain = input('Data file in (hkl/sca/mtz): ')
-        self.model = input('Model in: ')
-        self.pdbin = input('Fixed origin model: ')
+        self.datain = str(input('Data file in (hkl/sca/mtz): '))
+        self.model = str(input('Model in: '))
+        self.pdbin = str(input('Fixed origin model: '))
 
     def pointless(self):
         if self.datain.endswith('.hkl' or '.HKL'):
