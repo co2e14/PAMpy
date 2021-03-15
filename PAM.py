@@ -33,7 +33,7 @@ class PAM(object):
 
     def molrep(self):
         if self.model.endswith('.pdb' or '.PDB'):
-            self.model = ('molrep HKLIN scaled.mtz PATH_OUT ./ MODEL ' + str(self.model))
+            self.model = ('molrep -m scaled.mtz -f ' + str(self.model))
             os.system(str(self.model))
 
     def dimple(self):
